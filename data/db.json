@@ -9,7 +9,7 @@
     },
     {
       "id": 3,
-      "nama": "Cemilan"
+      "nama": "Camilan"
     }
   ],
   "products": [{
@@ -105,7 +105,7 @@
       "gambar": "pangsit.jpg",
       "category": {
         "id": 3,
-        "nama": "Cemilan"
+        "nama": "Camilan"
       }
     },
     {
@@ -117,7 +117,7 @@
       "gambar": "kentang-goreng.jpg",
       "category": {
         "id": 3,
-        "nama": "Cemilan"
+        "nama": "Camilan"
       }
     },
     {
@@ -129,7 +129,7 @@
       "gambar": "cheese-burger.jpg",
       "category": {
         "id": 3,
-        "nama": "Cemilan"
+        "nama": "Camilan"
       }
     },
     {

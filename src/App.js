@@ -7,6 +7,21 @@ import { Cart, ListCategories, NavbarComponent, Products } from './components';
 
 function App() {
   const [menus, setMenus] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleChangeCategory = (value) => {
+    setSelectedCategory(value);
+
+    axios
+      .get(`${API_URL}products?.nama=${value}`)
+      .then((res) => {
+        const menus = res.data;
+        setMenus(menus);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -26,7 +41,10 @@ function App() {
       <div className="mt-3">
         <Container fluid>
           <Row>
-            <ListCategories />
+            <ListCategories
+              handleChangeCategory={handleChangeCategory}
+              selectedCategory={selectedCategory}
+            />
             <Products menus={menus} />
             <Cart />
           </Row>

@@ -2,10 +2,8 @@ import { Card, Col, Button } from 'react-bootstrap';
 import { numberWithCommas } from '../utils/utils';
 
 const Product = ({ menu }) => {
-  console.log(menu);
-
   return (
-    <Col md={4} xs={6} className="py-2 px-2">
+    <Col md={4} sm={6} className="py-2 px-2">
       <Card className="shadow">
         <Card.Img
           style={{ height: '165px' }}
