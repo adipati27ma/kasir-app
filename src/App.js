@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import { API_URL } from './utils/constants';
+import axios from 'axios';
+
+import { Cart, ListCategories, NavbarComponent, Products } from './components';
 
 function App() {
+  const [menus, setMenus] = useState('');
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}products`)
+      .then((res) => {
+        const menus = res.data;
+        setMenus(menus);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavbarComponent />
+      <div className="mt-3">
+        <Container fluid>
+          <Row>
+            <ListCategories />
+            <Products menus={menus} />
+            <Cart />
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
