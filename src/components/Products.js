@@ -1,7 +1,7 @@
 import { Col, Row } from 'react-bootstrap';
 import Product from './Product';
 
-const Products = ({ menus }) => {
+const Products = ({ menus, addToCart }) => {
   return (
     <Col>
       <h2>
@@ -9,7 +9,10 @@ const Products = ({ menus }) => {
       </h2>
       <hr />
       <Row>
-        {menus && menus.map((menu) => <Product key={menu.id} menu={menu} />)}
+        {menus &&
+          menus.map((menu) => (
+            <Product key={menu.id} menu={menu} addToCart={addToCart} />
+          ))}
       </Row>
     </Col>
   );
