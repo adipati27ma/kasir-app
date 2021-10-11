@@ -7,13 +7,13 @@ import { Cart, ListCategories, NavbarComponent, Products } from './components';
 
 function App() {
   const [menus, setMenus] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Makanan');
 
   const handleChangeCategory = (value) => {
     setSelectedCategory(value);
 
     axios
-      .get(`${API_URL}products?.nama=${value}`)
+      .get(`${API_URL}products?category.nama=${value}`)
       .then((res) => {
         const menus = res.data;
         setMenus(menus);
@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}products`)
+      .get(`${API_URL}products?category.nama=Makanan`)
       .then((res) => {
         const menus = res.data;
         setMenus(menus);

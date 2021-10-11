@@ -19,9 +19,8 @@ const Icon = ({ nama }) => {
   return '';
 };
 
-const ListCategories = () => {
-  const [categories, setCategories, handleChangeCategory, selectedCategory] =
-    useState('');
+const ListCategories = ({ handleChangeCategory, selectedCategory }) => {
+  const [categories, setCategories] = useState('');
 
   useEffect(() => {
     axios
@@ -44,7 +43,12 @@ const ListCategories = () => {
       <ListGroup>
         {categories &&
           categories.map((category) => (
-            <ListGroup.Item key={category.id} style={{ cursor: 'pointer' }}>
+            <ListGroup.Item
+              key={category.id}
+              style={{ cursor: 'pointer' }}
+              onClick={() => handleChangeCategory(category.nama)}
+              active={selectedCategory === category.nama ? true : false}
+            >
               <span>
                 <Icon nama={category.nama} /> {category.nama}
               </span>
